@@ -10,6 +10,7 @@ function Separator() {
   return <View style={styles.separator} />;
 }
 
+// Starting screen
 class HomeScreen extends React.Component {
   render(){
   return (
@@ -20,13 +21,17 @@ class HomeScreen extends React.Component {
         onPress={() => this.props.navigation.navigate('Exercise')}
       />
     <Separator />
-      <Button type='outline' title="Inspect exercises" />
+      <Button
+        type='outline' title="Inspect exercises"
+        onPress={() => this.props.navigation.navigate('Data')}
+      />
     </View>
     </ImageBackground>
   );
 }
 }
 
+// Screen which contains possibility to create new exercises.
 class ExerciseScreen extends React.Component {
   render() {
     return (
@@ -37,17 +42,28 @@ class ExerciseScreen extends React.Component {
   }
 }
 
+// Data inspection Screen
+class DataScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Inspect data!</Text>
+      </View>
+    )
+  }
+}
 
+// Navigator
 const AppNavigator = createStackNavigator(
   {
     Home: HomeScreen,
     Exercise: ExerciseScreen,
+    Data: DataScreen,
   },
   {
     initialRouteName: 'Home',
   }
 );
-
 
 const styles = StyleSheet.create({
   container: {
